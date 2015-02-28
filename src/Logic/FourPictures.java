@@ -6,6 +6,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+import GUI.GameWindow;
+
 public class FourPictures {
 
 	private String selection;
@@ -15,8 +17,8 @@ public class FourPictures {
 	private ArrayList<Integer> charList;
 	
 	public FourPictures() throws Exception{
-		Games loadList = new Games("src\\Files\\GameList.txt");
-		
+		Games loadList = new Games(chooseGame());
+
 		this.answer = loadList.printLines(loadList,0);;
 		this.selection = loadList.printLines(loadList,1);
 		this.filename[0] =loadList.printLines(loadList,2);
@@ -98,9 +100,15 @@ public class FourPictures {
 		}
 	}
 	
+	public String addWhiteSpace(){
+		
+		
+		return this.answer;
+	}
+	
 	public static String chooseGame(){
 		Random rand = new Random();
-		String[] game = {"src\\Files\\GameList.txt","src\\Files\\GameList2.txt","src\\Files\\GameList3.txt"};
+		String[] game = {"src\\Files\\GameList.txt","src\\Files\\GameList2.txt"};
 		int gameNumber = rand.nextInt(game.length);
 		
 		return game[gameNumber];

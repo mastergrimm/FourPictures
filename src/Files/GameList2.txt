@@ -1,1 +1,6 @@
-2
+wave
+voaifwasdkech
+src\\Files\\Images\\Wave\\Wave1.jpg
+src\\Files\\Images\\Wave\\Wave2.jpg
+src\\Files\\Images\\Wave\\Wave3.jpg
+src\\Files\\Images\\Wave\\Wave4.jpg
