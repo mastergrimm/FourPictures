@@ -7,6 +7,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -19,11 +20,12 @@ import Logic.FourPictures;
 public class GameWindow extends JFrame{
 	
 	public static int counter = 0;
+	private ArrayList<JButton> buttonArray;
 	
 	public GameWindow(FourPictures game){
 		super("FOUR PICTURES");
+		buttonArray = new ArrayList<JButton>();
 		createWidgets(game);
-		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(600,600);
 		setLocationRelativeTo(null);
@@ -56,33 +58,47 @@ public class GameWindow extends JFrame{
 		}
 		
 		for(int i=0;i < game.getSelection().length();++i){
-			char c=game.getSelectionLetters(i);
-			String temp = "";
-			temp+=c;
-			JButton btn=new JButton(temp);
-			
-			btn.addActionListener(new ActionListener() {
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					checkButton(btn, game);
-				}
-			});
-			south.add(btn);
+			String text="";
+            text+=game.getSelectionLetters(i);
+            char chr=text.charAt(0);
+            JButton btn=new JButton(text);
+            this.buttonArray.add(btn);
+            btn.addActionListener(new ActionListener() {
+               @Override
+               public void actionPerformed(ActionEvent ae) {
+                   for (int j=0;j<game.getAnswer().length();j++) {
+                       if (game.getAnswer().charAt(j)==chr) {
+                    	   ++counter;
+                           game.setCharacter(game.getCorrectPosition(j)-1,chr);
+                           revealed.setText(game.getRevealed());
+                           break;
+                       }
+                   }
+                   btn.setEnabled(false);
+               } 
+            });
 		}
+		
+		for (int i=0;i<this.buttonArray.size();i++) {
+            south.add(this.buttonArray.get(i));
+        }
 		
 		add(main);
 	}
 	
-	public void checkButton(JButton button, FourPictures game){
+	public void checkButton(JButton button, JLabel label, FourPictures game){
 		char d = button.getText().charAt(0);
-		
 		
 		for(int j = 0; j < game.getSelection().length();++j)
 		{
 			if(game.getAnswer().charAt(counter)==d){
 				++counter;
+				
+				game.setCharacter(game.getCorrectPosition(counter)-1, d);
+				
+				label.setText(game.getRevealed());
 				button.setEnabled(false);
-			}
+			}	
 		}	
 	}
 	

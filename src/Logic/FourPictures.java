@@ -1,5 +1,6 @@
 package Logic;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -11,6 +12,7 @@ public class FourPictures {
 	private String[] filename = new String[4];
 	private String answer;
 	private String revealed;	
+	private ArrayList<Integer> charList;
 	
 	public FourPictures() throws Exception{
 		Games loadList = new Games("src\\Files\\GameList.txt");
@@ -21,10 +23,10 @@ public class FourPictures {
 		this.filename[1] =loadList.printLines(loadList,3);
 		this.filename[2] =loadList.printLines(loadList,4);
 		this.filename[3] =loadList.printLines(loadList,5);
-		
+		this.charList=new ArrayList<Integer>();
 		this.revealed = "";
-		
 		CreateGuessLabel();
+		addPosition();
 	}
 	
 	public void CreateGuessLabel(){
@@ -72,9 +74,28 @@ public class FourPictures {
 		return this.revealed;
 	}
 	
+	public String removeCharAt(String s, int pos) {
+	      return s.substring(0, pos) + s.substring(pos + 1);
+	   }
+	
 	public void setCharacter(int i,char c) {
 		String temp=this.revealed.substring(0,i)+c+this.revealed.substring(i+1);
 		this.revealed=temp;
+	}
+	
+	public int getCorrectPosition(int i) {
+		return this.charList.get(i);
+	}
+	
+	public void addPosition(){
+		int c=0,i=1;
+		while (c<this.answer.length()) {
+			if (i%2!=0) {
+				this.charList.add(i); 
+				++c;
+			}
+			++i;
+		}
 	}
 	
 	public static String chooseGame(){

@@ -1,6 +1,6 @@
 paris
 abrusopilsat
-E:\\Main\\Programming\\Java\\Eclipse Projects\\PRACWK3\\src\\Files\\Images\\Paris\\Paris1.jpg
-E:\\Main\\Programming\\Java\\Eclipse Projects\\PRACWK3\\src\\Files\\Images\\Paris\\Paris2.jpg
-E:\\Main\\Programming\\Java\\Eclipse Projects\\PRACWK3\\src\\Files\\Images\\Paris\\Paris3.jpg
-E:\\Main\\Programming\\Java\\Eclipse Projects\\PRACWK3\\src\\Files\\Images\\Paris\\Paris4.jpg
+src\\Files\\Images\\Paris\\Paris1.jpg
+src\\Files\\Images\\Paris\\Paris2.jpg
+src\\Files\\Images\\Paris\\Paris3.jpg
+src\\Files\\Images\\Paris\\Paris4.jpg
