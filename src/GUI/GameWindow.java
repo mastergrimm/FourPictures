@@ -22,6 +22,7 @@ public class GameWindow extends JFrame{
 	public static int counter = 0;
 	private ArrayList<JButton> buttonArray;
 	
+	
 	public GameWindow(FourPictures game){
 		super("FOUR PICTURES");
 		buttonArray = new ArrayList<JButton>();
@@ -66,15 +67,9 @@ public class GameWindow extends JFrame{
             btn.addActionListener(new ActionListener() {
                @Override
                public void actionPerformed(ActionEvent ae) {
-                   for (int j=0;j<game.getAnswer().length();j++) {
-                       if (game.getAnswer().charAt(j)==chr) {
-                    	   ++counter;
-                           game.setCharacter(game.getCorrectPosition(j)-1,chr);
-                           revealed.setText(game.getRevealed());
-                           break;
-                       }
-                   }
-                   btn.setEnabled(false);
+            	   
+            	   checkButton(btn,revealed,game);
+                   
                } 
             });
 		}
@@ -93,11 +88,10 @@ public class GameWindow extends JFrame{
 		{
 			if(game.getAnswer().charAt(counter)==d){
 				++counter;
-				
 				game.setCharacter(game.getCorrectPosition(counter)-1, d);
-				
 				label.setText(game.getRevealed());
 				button.setEnabled(false);
+				break;
 			}	
 		}	
 	}
