@@ -67,9 +67,7 @@ public class GameWindow extends JFrame{
             btn.addActionListener(new ActionListener() {
                @Override
                public void actionPerformed(ActionEvent ae) {
-            	   
             	   checkButton(btn,revealed,game);
-                   
                } 
             });
 		}
@@ -87,10 +85,10 @@ public class GameWindow extends JFrame{
 		for(int j = 0; j < game.getSelection().length();++j)
 		{
 			if(game.getAnswer().charAt(counter)==d){
-				++counter;
 				game.setCharacter(game.getCorrectPosition(counter)-1, d);
 				label.setText(game.getRevealed());
 				button.setEnabled(false);
+				++counter;
 				break;
 			}	
 		}	
