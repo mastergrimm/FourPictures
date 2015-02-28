@@ -18,6 +18,8 @@ import Logic.FourPictures;
 
 public class GameWindow extends JFrame{
 	
+	public static int counter = 0;
+	
 	public GameWindow(FourPictures game){
 		super("FOUR PICTURES");
 		createWidgets(game);
@@ -73,7 +75,7 @@ public class GameWindow extends JFrame{
 	
 	public void checkButton(JButton button, FourPictures game){
 		char d = button.getText().charAt(0);
-		int counter = 0;
+		
 		
 		for(int j = 0; j < game.getSelection().length();++j)
 		{
